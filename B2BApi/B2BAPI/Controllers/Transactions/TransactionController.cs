@@ -14,4 +14,14 @@ public class TransactionController : ControllerBase
             transactionId = Guid.NewGuid().ToString()
         });
     }
+
+    [HttpPost("get-transaction-status")]
+    public IActionResult GetTransactionStatus([FromBody] TransactionStatusRequest request)
+    {
+        var status = Enum.GetValues(typeof(TransactionStatus))          
+            .OfType<TransactionStatus>()              
+            .OrderBy(e => Guid.NewGuid()) 
+            .First();
+        return Ok(new TransactionStatusResponse(request.TransactionId, status));
+    }
 }
