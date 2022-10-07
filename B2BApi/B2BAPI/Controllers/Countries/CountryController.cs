@@ -2,14 +2,17 @@
 
 namespace B2BAPI.Controllers.Countries;
 
-//[Route("api/countries")]
+[Route("")]
 [ApiController]
 public class CountryController : ControllerBase
 {
     [HttpPost("get-country-list")]
-    [ProducesResponseType(typeof(void), statusCode: 200)]
     public IActionResult GetCountries()
     {
-        return Ok("success");
+        return Ok(new CountryDto[]
+        {
+            new CountryDto("Iran", "IR"),
+            new CountryDto("Sweden", "SE"),
+        });
     }
 }
