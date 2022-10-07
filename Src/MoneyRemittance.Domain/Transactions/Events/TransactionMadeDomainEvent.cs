@@ -1,6 +1,9 @@
-﻿namespace B2BAPI.Controllers.Transactions;
+﻿using MoneyRemittance.BuildingBlocks.Domain;
 
-public record SubmitTransactionRequest(
+namespace MoneyRemittance.Domain.Transactions.Events;
+
+public record TransactionMadeDomainEvent(
+    TransactionId TransactionId,
     string SenderFirstName,
     string SenderLastName,
     string SenderEmail,
@@ -17,4 +20,4 @@ public record SubmitTransactionRequest(
     decimal ExchangeRate,
     decimal Fees,
     string TransactionNumber,
-    string FromCurrency);
+    string FromCurrency) : DomainEvent(TransactionId);

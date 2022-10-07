@@ -12,6 +12,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{4F824DB8-28CF-431A-B9D2-30EBBB1143EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{FEB7EB67-C34A-4037-9BEA-9ADA14EBE994}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyRemittance.BuildingBlocks", "Src\BuildingBlocks\MoneyRemittance.BuildingBlocks\MoneyRemittance.BuildingBlocks.csproj", "{A5CF611F-A6FC-4F8B-90EE-7A58521838E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyRemittance.Domain", "Src\MoneyRemittance.Domain\MoneyRemittance.Domain.csproj", "{C3324C8A-EA55-472C-AF7B-6C7B9833E82D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{753C3F40-D746-4BA4-9776-E3AB7997D064}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyRemittance.Domain.UnitTests", "Tests\MoneyRemittance.Domain.UnitTests\MoneyRemittance.Domain.UnitTests.csproj", "{F19762AB-1DD6-438D-A414-28AF3DF8DDE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyRemittance.TestHelpers", "Tests\MoneyRemittance.TestHelpers\MoneyRemittance.TestHelpers.csproj", "{355CFAAD-EEC9-4C05-BFB4-66C7D3DB2BED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,12 +36,33 @@ Global
 		{2D9821F5-8D2B-4458-A7DD-7889C346E64B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D9821F5-8D2B-4458-A7DD-7889C346E64B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D9821F5-8D2B-4458-A7DD-7889C346E64B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5CF611F-A6FC-4F8B-90EE-7A58521838E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5CF611F-A6FC-4F8B-90EE-7A58521838E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5CF611F-A6FC-4F8B-90EE-7A58521838E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5CF611F-A6FC-4F8B-90EE-7A58521838E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3324C8A-EA55-472C-AF7B-6C7B9833E82D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3324C8A-EA55-472C-AF7B-6C7B9833E82D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3324C8A-EA55-472C-AF7B-6C7B9833E82D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3324C8A-EA55-472C-AF7B-6C7B9833E82D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F19762AB-1DD6-438D-A414-28AF3DF8DDE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F19762AB-1DD6-438D-A414-28AF3DF8DDE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F19762AB-1DD6-438D-A414-28AF3DF8DDE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F19762AB-1DD6-438D-A414-28AF3DF8DDE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{355CFAAD-EEC9-4C05-BFB4-66C7D3DB2BED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{355CFAAD-EEC9-4C05-BFB4-66C7D3DB2BED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{355CFAAD-EEC9-4C05-BFB4-66C7D3DB2BED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{355CFAAD-EEC9-4C05-BFB4-66C7D3DB2BED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2D9821F5-8D2B-4458-A7DD-7889C346E64B} = {F9054DEC-3B27-4FAE-A8CC-E2A42F5C1340}
+		{FEB7EB67-C34A-4037-9BEA-9ADA14EBE994} = {4F824DB8-28CF-431A-B9D2-30EBBB1143EB}
+		{A5CF611F-A6FC-4F8B-90EE-7A58521838E2} = {FEB7EB67-C34A-4037-9BEA-9ADA14EBE994}
+		{C3324C8A-EA55-472C-AF7B-6C7B9833E82D} = {4F824DB8-28CF-431A-B9D2-30EBBB1143EB}
+		{F19762AB-1DD6-438D-A414-28AF3DF8DDE6} = {753C3F40-D746-4BA4-9776-E3AB7997D064}
+		{355CFAAD-EEC9-4C05-BFB4-66C7D3DB2BED} = {753C3F40-D746-4BA4-9776-E3AB7997D064}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4DA36A26-5E92-400C-BAD0-5E66DF7D5BFD}
