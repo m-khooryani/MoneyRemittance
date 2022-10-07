@@ -11,7 +11,7 @@ public class CountryController : ControllerBase
     {
         return Ok(new CountryDto[]
         {
-            new CountryDto("Iran", "IR"),
+            new CountryDto("Finland", "FI"),
             new CountryDto("Sweden", "SE"),
         });
     }
