@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyRemittance.Domain.Unit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyRemittance.TestHelpers", "Tests\MoneyRemittance.TestHelpers\MoneyRemittance.TestHelpers.csproj", "{355CFAAD-EEC9-4C05-BFB4-66C7D3DB2BED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyRemittance.Application", "Src\MoneyRemittance.Application\MoneyRemittance.Application.csproj", "{48EDF5E7-81E5-43E2-8F69-849C67D3AFEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{355CFAAD-EEC9-4C05-BFB4-66C7D3DB2BED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{355CFAAD-EEC9-4C05-BFB4-66C7D3DB2BED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{355CFAAD-EEC9-4C05-BFB4-66C7D3DB2BED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48EDF5E7-81E5-43E2-8F69-849C67D3AFEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48EDF5E7-81E5-43E2-8F69-849C67D3AFEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48EDF5E7-81E5-43E2-8F69-849C67D3AFEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48EDF5E7-81E5-43E2-8F69-849C67D3AFEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{C3324C8A-EA55-472C-AF7B-6C7B9833E82D} = {4F824DB8-28CF-431A-B9D2-30EBBB1143EB}
 		{F19762AB-1DD6-438D-A414-28AF3DF8DDE6} = {753C3F40-D746-4BA4-9776-E3AB7997D064}
 		{355CFAAD-EEC9-4C05-BFB4-66C7D3DB2BED} = {753C3F40-D746-4BA4-9776-E3AB7997D064}
+		{48EDF5E7-81E5-43E2-8F69-849C67D3AFEF} = {4F824DB8-28CF-431A-B9D2-30EBBB1143EB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4DA36A26-5E92-400C-BAD0-5E66DF7D5BFD}

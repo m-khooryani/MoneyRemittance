@@ -1,4 +1,5 @@
 ﻿using MoneyRemittance.BuildingBlocks.Domain;
+using Newtonsoft.Json;
 
 namespace MoneyRemittance.Domain.Transactions;
 
@@ -11,6 +12,7 @@ public class AddressInfo : ValueObject
     public string PostalCode { get; }
     public string State { get; }
 
+    [JsonConstructor]
     private AddressInfo(
         string phone, 
         string address, 
