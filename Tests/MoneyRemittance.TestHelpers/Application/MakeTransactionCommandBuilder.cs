@@ -1,14 +1,12 @@
-﻿using MoneyRemittance.BuildingBlocks.Domain;
-using MoneyRemittance.Domain.Countries.Services;
+﻿using MoneyRemittance.Application.Transactions.Commands.Make;
+using MoneyRemittance.BuildingBlocks.Domain;
 using MoneyRemittance.Domain.Transactions;
-using MoneyRemittance.Domain.Transactions.Services;
+using MoneyRemittance.TestHelpers.Domain;
 
-namespace MoneyRemittance.TestHelpers.Domain;
+namespace MoneyRemittance.TestHelpers.Application;
 
-public class TransactionBuilder
+public class MakeTransactionCommandBuilder
 {
-    private ITransactionSubmitting _transactionSubmitting;
-    private ICountryExistanceChecking _countryExistanceChecking;
     private TransactionId _transactionId = TransactionId.New();
     private string _senderFirstName = Guid.NewGuid().ToString()[30..];
     private string _senderLastName = Guid.NewGuid().ToString()[30..];
@@ -28,23 +26,9 @@ public class TransactionBuilder
     private string _transactionNumber = Guid.NewGuid().ToString()[..12];
     private string _fromCurrency = Guid.NewGuid().ToString()[30..];
 
-    public TransactionBuilder SetTransactionSubmitter(ITransactionSubmitting transactionSubmitting)
+    public MakeTransactionCommand Build()
     {
-        _transactionSubmitting = transactionSubmitting;
-        return this;
-    }
-
-    public TransactionBuilder SetCountryExistanceChecking(ICountryExistanceChecking countryExistanceChecking)
-    {
-        _countryExistanceChecking = countryExistanceChecking;
-        return this;
-    }
-
-    public async Task<Transaction> BuildAsync()
-    {
-        return await Transaction.MakeAsync(
-            _transactionSubmitting,
-            _countryExistanceChecking,
+        return new MakeTransactionCommand(
             _transactionId,
             _senderFirstName,
             _senderLastName,

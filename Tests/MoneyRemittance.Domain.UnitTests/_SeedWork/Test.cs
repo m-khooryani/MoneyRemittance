@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using MoneyRemittance.BuildingBlocks.Domain;
+using Xunit;
 
 namespace MoneyRemittance.Domain.UnitTests._SeedWork;
 

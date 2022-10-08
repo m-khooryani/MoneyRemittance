@@ -6,7 +6,7 @@ public class AddressInfoBuilder
 {
     private string _phone = Guid.NewGuid().ToString()[30..];
     private string _address = Guid.NewGuid().ToString()[30..];
-    private string _country = Guid.NewGuid().ToString()[30..];
+    private string _country = Guid.NewGuid().ToString()[..2];
     private string _city = Guid.NewGuid().ToString()[30..];
     private string _postalCode = Guid.NewGuid().ToString()[30..];
     private string _state = Guid.NewGuid().ToString()[30..];
