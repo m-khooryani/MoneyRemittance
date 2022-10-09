@@ -1,6 +1,8 @@
 ﻿using Autofac;
+using MoneyRemittance.Domain.Banks.Services;
 using MoneyRemittance.Domain.Countries.Services;
 using MoneyRemittance.Domain.Transactions.Services;
+using MoneyRemittance.Infrastructure.Domain.Banks;
 
 namespace MoneyRemittance.Infrastructure.Configuration;
 
@@ -19,6 +21,10 @@ public class DomainServicesModule : Module
 
     protected override void Load(ContainerBuilder builder)
     {
+        builder.RegisterType<BankList>()
+            .As<IBankList>()
+            .SingleInstance();
+
         if (_transactionSubmitting is not null)
         {
             builder.RegisterInstance(_transactionSubmitting)

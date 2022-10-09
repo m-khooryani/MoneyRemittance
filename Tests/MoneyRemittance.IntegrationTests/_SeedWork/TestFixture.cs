@@ -23,6 +23,7 @@ using MoneyRemittance.Domain.Transactions;
 using MoneyRemittance.Domain.Transactions.Services;
 using MoneyRemittance.Infrastructure;
 using MoneyRemittance.Infrastructure.Configuration;
+using MoneyRemittance.Infrastructure.Configuration.B2BApi;
 using NSubstitute;
 using Xunit.Abstractions;
 
@@ -110,6 +111,7 @@ public class TestFixture : IDisposable
             ConnectionString = "notEmpty",
             OutboxQueueName = "notEmpty",
         };
+        var b2bApiModule = new B2BApiModule(configuration["B2bApiEndpoint"]);
 
         CompositionRoot.Initialize(
             cleanArchitectureModule,
@@ -120,7 +122,8 @@ public class TestFixture : IDisposable
             dapperModule,
             domainServiceModule,
             retryPolicyModule,
-            azureServiceBusModule);
+            azureServiceBusModule,
+            b2bApiModule);
     }
 
     private static LoggerFactory GetLoggerFactory()
