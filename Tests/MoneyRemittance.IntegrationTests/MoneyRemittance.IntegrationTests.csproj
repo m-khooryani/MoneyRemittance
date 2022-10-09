@@ -29,6 +29,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\Src\BuildingBlocks\MoneyRemittance.BuildingBlocks.AzureServiceBus\MoneyRemittance.BuildingBlocks.AzureServiceBus.csproj" />
+		<ProjectReference Include="..\..\Src\BuildingBlocks\MoneyRemittance.BuildingBlocks.Dapper\MoneyRemittance.BuildingBlocks.Dapper.csproj" />
 		<ProjectReference Include="..\..\Src\MoneyRemittance.Domain\MoneyRemittance.Domain.csproj" />
 		<ProjectReference Include="..\..\Src\MoneyRemittance.Infrastructure\MoneyRemittance.Infrastructure.csproj" />
 		<ProjectReference Include="..\MoneyRemittance.TestHelpers\MoneyRemittance.TestHelpers.csproj" />

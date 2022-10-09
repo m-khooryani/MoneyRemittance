@@ -48,4 +48,10 @@ public class MakeTransactionCommandBuilder
             _transactionNumber,
             _fromCurrency);
     }
+
+    public MakeTransactionCommandBuilder SetTransactionId(TransactionId transactionId)
+    {
+        _transactionId = transactionId;
+        return this;
+    }
 }

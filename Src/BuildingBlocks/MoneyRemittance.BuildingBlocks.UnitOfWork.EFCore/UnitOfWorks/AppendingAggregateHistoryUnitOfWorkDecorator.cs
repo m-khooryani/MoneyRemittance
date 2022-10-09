@@ -10,13 +10,16 @@ internal class AppendingAggregateHistoryUnitOfWorkDecorator : IUnitOfWork
 {
     private readonly IUnitOfWork _decorated;
     private readonly ServiceDbContext _context;
+    private readonly IAggregateRepository _aggregateRepository;
 
     public AppendingAggregateHistoryUnitOfWorkDecorator(
         IUnitOfWork decorated,
-        ServiceDbContext context)
+        ServiceDbContext context,
+        IAggregateRepository aggregateRepository)
     {
         _decorated = decorated;
         _context = context;
+        _aggregateRepository = aggregateRepository;
     }
 
     public async Task<int> CommitAsync(CancellationToken cancellationToken = default)
@@ -27,11 +30,7 @@ internal class AppendingAggregateHistoryUnitOfWorkDecorator : IUnitOfWork
 
     private async Task SaveEventsAsync(CancellationToken cancellationToken)
     {
-        var aggregates = _context
-            .ChangeTracker
-            .Entries<AggregateRoot>()
-            .Where(x => x.Entity.DomainEvents != null && x.Entity.DomainEvents.Any())
-            .ToList();
+        var aggregates = _aggregateRepository.Load();
         if (!aggregates.Any())
         {
             return;
@@ -40,15 +39,14 @@ internal class AppendingAggregateHistoryUnitOfWorkDecorator : IUnitOfWork
         foreach (var aggregate in aggregates)
         {
             var domainEvents = aggregate
-                .Entity
                 .DomainEvents;
-            var type = aggregate.Entity.GetType().FullName;
+            var type = aggregate.GetType().FullName;
             int index = 0;
             foreach (var domainEvent in domainEvents)
             {
                 var historyItem = AggregateRootHistoryItem.Create(
                     domainEvent.AggregateId,
-                    aggregate.Entity.Version + index,
+                    aggregate.Version + index,
                     domainEvent.GetType().FullName,
                     domainEvent.OccurredAt,
                     type,

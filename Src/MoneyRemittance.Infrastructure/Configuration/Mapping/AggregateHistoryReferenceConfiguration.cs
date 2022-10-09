@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MoneyRemittance.BuildingBlocks.Application.AggregateHistory;
 
-namespace DArch.Samples.AppointmentService.Infrastructure.Configuration.DArchMapping;
+namespace MoneyRemittance.Infrastructure.Configuration.Mapping;
 
 internal class AggregateHistoryReferenceConfiguration : IEntityTypeConfiguration<AggregateRootHistoryItem>
 {

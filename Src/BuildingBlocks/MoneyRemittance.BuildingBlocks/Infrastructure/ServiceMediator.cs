@@ -7,12 +7,12 @@ namespace MoneyRemittance.BuildingBlocks.Infrastructure;
 
 public class ServiceMediator : IServiceMediator
 {
-    public Task<TResult> CommandAsync<TResult>(ICommand<TResult> command)
+    public async Task<TResult> CommandAsync<TResult>(ICommand<TResult> command)
     {
         using var scope = CompositionRoot.BeginLifetimeScope();
         var mediator = scope.Resolve<IMediator>();
 
-        return mediator.Send(command);
+        return await mediator.Send(command);
     }
 
     public async Task CommandAsync(ICommand command)
@@ -23,11 +23,11 @@ public class ServiceMediator : IServiceMediator
         await mediator.Send(command);
     }
 
-    public Task<TResult> QueryAsync<TResult>(IQuery<TResult> query)
+    public async Task<TResult> QueryAsync<TResult>(IQuery<TResult> query)
     {
         using var scope = CompositionRoot.BeginLifetimeScope();
         var mediator = scope.Resolve<IMediator>();
 
-        return mediator.Send(query);
+        return await mediator.Send(query);
     }
 }

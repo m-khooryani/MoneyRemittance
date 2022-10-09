@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MoneyRemittance.BuildingBlocks.Application.Contracts;
 using MoneyRemittance.BuildingBlocks.AzureServiceBus;
+using MoneyRemittance.BuildingBlocks.Dapper;
 using MoneyRemittance.BuildingBlocks.Domain;
 using MoneyRemittance.BuildingBlocks.Infrastructure;
 using MoneyRemittance.BuildingBlocks.Infrastructure.CleanArchitecture;
@@ -57,8 +58,6 @@ public class TestFixture : IDisposable
             .Build();
 
         var dbContextOptionsBuilder = new DbContextOptionsBuilder<MoneyRemittanceDbContext>();
-        //dbContextOptionsBuilder
-        //    .ReplaceService<IValueConverterSelector, SqlServerTypedIdValueConverterSelector>();
 
         var dataSource = configuration["dataSource"];
         dbContextOptionsBuilder.UseSqlServer(GetConnectionString());
@@ -80,8 +79,7 @@ public class TestFixture : IDisposable
         var mediatorModule = new MediatorModule(
             new[]
             {
-                applicationAssembly,
-                //infrastructureAssembly,
+                applicationAssembly
             },
             new[]
             {
@@ -92,7 +90,7 @@ public class TestFixture : IDisposable
             });
         var unitOfWorkModule = new EfCoreUnitOfWorkModule<MoneyRemittanceDbContext>(contextOptionsBuilder, infrastructureAssembly);
         var loggingModule = new LoggingModule(GetLoggerFactory());
-        //var dapperModule = new DapperModule(GetConnectionString());
+        var dapperModule = new DapperModule(GetConnectionString());
 
         // Domain Services
         var transactionSubmitting = Substitute.For<ITransactionSubmitting>();
@@ -119,7 +117,7 @@ public class TestFixture : IDisposable
             mediatorModule,
             unitOfWorkModule,
             loggingModule,
-            //dapperModule,
+            dapperModule,
             domainServiceModule,
             retryPolicyModule,
             azureServiceBusModule);
@@ -152,8 +150,6 @@ public class TestFixture : IDisposable
             .Build();
 
         var dbContextOptionsBuilder = new DbContextOptionsBuilder<MoneyRemittanceDbContext>();
-        //dbContextOptionsBuilder
-        //    .ReplaceService<IValueConverterSelector, SqlServerTypedIdValueConverterSelector>();
 
         var dataSource = configuration["dataSource"];
         dbContextOptionsBuilder.UseSqlServer(GetConnectionString());
@@ -188,6 +184,11 @@ public class TestFixture : IDisposable
         using var scope = CompositionRoot.BeginLifetimeScope();
         var context = scope.Resolve<MoneyRemittanceDbContext>();
         context.Database.EnsureCreated();
+
+        context.Database.ExecuteSqlRaw(@"
+CREATE TABLE Transactions (
+    TransactionId nvarchar(MAX),
+    SenderFirstName nvarchar(MAX));");
     }
 
     internal async Task ResetAsync()

@@ -19,12 +19,26 @@ public class TransactionTests
     }
 
     [Fact]
-    public async Task Test1()
+    public async Task Make_Transaction_success()
     {
         await _testFixture.ResetAsync();
 
+        // Make Transaction
         var createCommand = new MakeTransactionCommandBuilder()
             .Build();
         await _mediator.CommandAsync(createCommand);
+
+        // Queue Projection Command
+        await _testFixture.ProcessLastOutboxMessageAsync();
+        // Process Projection Command
+        await _testFixture.ProcessLastOutboxMessageAsync();
+
+        // Transactions Query
+        var query = new GetTransactionsQueryBuilder()
+            .Build();
+        var transactions = await _mediator.QueryAsync(query);
+
+        // Assert
+        Assert.Single(transactions.Items);
     }
 }

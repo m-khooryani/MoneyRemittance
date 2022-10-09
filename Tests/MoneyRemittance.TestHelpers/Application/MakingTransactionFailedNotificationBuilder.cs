@@ -11,4 +11,10 @@ public class MakingTransactionFailedNotificationBuilder
     {
         return new MakingTransactionFailedNotification(_makeTransactionCommand);
     }
+
+    public MakingTransactionFailedNotificationBuilder SetMakeTransactionCommand(MakeTransactionCommand command)
+    {
+        _makeTransactionCommand = command;
+        return this;
+    }
 }

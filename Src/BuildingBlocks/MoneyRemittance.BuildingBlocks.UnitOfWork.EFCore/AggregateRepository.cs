@@ -28,12 +28,10 @@ internal class AggregateRepository : IAggregateRepository
         _logger = logger;
     }
 
-    public async Task AddAsync<TAggregateRoot, TKey>(TAggregateRoot aggregateRoot)
+    public async void Add<TAggregateRoot, TKey>(TAggregateRoot aggregateRoot)
         where TAggregateRoot : AggregateRoot<TKey>
         where TKey : TypedId
     {
-        await _context.AddAsync(aggregateRoot);
-
         _loadedAggregates.Add(aggregateRoot.Id, aggregateRoot);
     }
 
@@ -49,7 +47,6 @@ internal class AggregateRepository : IAggregateRepository
         var aggregateRoot = await Load<TAggregateRoot, TId>(aggregateId);
 
         _loadedAggregates.Add(aggregateId, aggregateRoot);
-        _context.Attach(aggregateRoot);
         return aggregateRoot;
     }
 

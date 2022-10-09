@@ -1,4 +1,5 @@
 ﻿using MoneyRemittance.BuildingBlocks.Application.Configuration.Commands;
+using MoneyRemittance.BuildingBlocks.Domain;
 using MoneyRemittance.Domain.Countries.Services;
 using MoneyRemittance.Domain.Transactions;
 using MoneyRemittance.Domain.Transactions.Services;
@@ -7,13 +8,16 @@ namespace MoneyRemittance.Application.Transactions.Commands.Make;
 
 internal class MakeTransactionCommandHandler : CommandHandler<MakeTransactionCommand, TransactionId>
 {
+    private readonly IAggregateRepository _aggregateRepository;
     private readonly ITransactionSubmitting _transactionSubmitting;
     private readonly ICountryExistanceChecking _countryExistanceChecking;
 
     public MakeTransactionCommandHandler(
+        IAggregateRepository aggregateRepository,
         ITransactionSubmitting transactionSubmitting, 
         ICountryExistanceChecking countryExistanceChecking)
     {
+        _aggregateRepository = aggregateRepository;
         _transactionSubmitting = transactionSubmitting;
         _countryExistanceChecking = countryExistanceChecking;
     }
@@ -41,6 +45,8 @@ internal class MakeTransactionCommandHandler : CommandHandler<MakeTransactionCom
             command.Fees,
             command.TransactionNumber,
             command.FromCurrency);
+
+        _aggregateRepository.Add<Transaction, TransactionId>(transaction);
 
         return transaction.TransactionExternalId;
     }

@@ -13,6 +13,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\BuildingBlocks\MoneyRemittance.BuildingBlocks.Dapper\MoneyRemittance.BuildingBlocks.Dapper.csproj" />
 		<ProjectReference Include="..\MoneyRemittance.Domain\MoneyRemittance.Domain.csproj" />
 		<ProjectReference Include="..\MoneyRemittance.IntegrationEvents\MoneyRemittance.IntegrationEvents.csproj" />
 	</ItemGroup>
