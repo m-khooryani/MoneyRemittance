@@ -11,6 +11,10 @@ public class DomainServicesModule : Module
     private readonly ITransactionSubmitting _transactionSubmitting;
     private readonly ICountryExistanceChecking _countryExistanceChecking;
 
+    public DomainServicesModule()
+    {
+    }
+
     public DomainServicesModule(
         ITransactionSubmitting transactionSubmitting, 
         ICountryExistanceChecking countryExistanceChecking)

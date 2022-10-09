@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(Nowarn);1591</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="6.0.2" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI" Version="6.0.4" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="6.0.4" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="6.0.4" />
+		<PackageReference Include="Hellang.Middleware.ProblemDetails" Version="6.4.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.3" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.3" />
+		<PackageReference Include="Microsoft.IO.RecyclableMemoryStream" Version="2.2.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.2" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.3.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\BuildingBlocks\MoneyRemittance.BuildingBlocks.AzureServiceBus\MoneyRemittance.BuildingBlocks.AzureServiceBus.csproj" />
+		<ProjectReference Include="..\BuildingBlocks\MoneyRemittance.BuildingBlocks.Extensions.Hosting\MoneyRemittance.BuildingBlocks.Extensions.Hosting.csproj" />
+		<ProjectReference Include="..\MoneyRemittance.Application\MoneyRemittance.Application.csproj" />
+		<ProjectReference Include="..\MoneyRemittance.Infrastructure\MoneyRemittance.Infrastructure.csproj" />
+	</ItemGroup>
+
+</Project>
