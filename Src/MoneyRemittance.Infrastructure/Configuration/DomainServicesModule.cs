@@ -2,10 +2,12 @@
 using MoneyRemittance.Domain.Banks.Services;
 using MoneyRemittance.Domain.Beneficiaries.Services;
 using MoneyRemittance.Domain.Countries.Services;
+using MoneyRemittance.Domain.ExchangeRates.Services;
 using MoneyRemittance.Domain.Transactions.Services;
 using MoneyRemittance.Infrastructure.Domain.Banks;
 using MoneyRemittance.Infrastructure.Domain.Beneficiaries;
 using MoneyRemittance.Infrastructure.Domain.Countries;
+using MoneyRemittance.Infrastructure.Domain.ExchangeRates;
 
 namespace MoneyRemittance.Infrastructure.Configuration;
 
@@ -38,6 +40,13 @@ public class DomainServicesModule : Module
 
         builder.RegisterType<Country>()
             .As<ICountry>()
+            .SingleInstance();
+        builder.RegisterType<CountryExistanceChecking>()
+            .As<ICountryExistanceChecking>()
+            .SingleInstance();
+
+        builder.RegisterType<ExchangeRate>()
+            .As<IExchangeRate>()
             .SingleInstance();
 
         if (_transactionSubmitting is not null)
