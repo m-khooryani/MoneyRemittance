@@ -21,7 +21,7 @@ public class BankController : ControllerBase
     [RequirePermission("Get-banks-list")]
     [ProducesResponseType(typeof(BankDto[]), statusCode: 200)]
     public async Task<IActionResult> GetBankList(
-            [FromQuery] string country)
+        [FromQuery] string country)
     {
         var banks = await _mediator.CommandAsync(
             new GetBankListCommand(country));
