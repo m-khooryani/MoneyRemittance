@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using MoneyRemittance.Domain.Banks.Services;
 using MoneyRemittance.Domain.Beneficiaries.Services;
+using MoneyRemittance.Domain.Countries.Services;
 using Newtonsoft.Json;
 
 namespace MoneyRemittance.Infrastructure.Configuration.B2BApi;
@@ -34,6 +35,14 @@ internal class B2BApiClient
         var content = new StringContent($"{{\"accountNumber\":\"{accountNumber}\",\"bankCode\":\"{bankCode}\"}}", Encoding.UTF8, "application/json");
         var response = await client.PostAsync($"{_apiConfig.Endpoint.TrimEnd('/')}/get-beneficiary-name", content);
         return await ReadAsJsonAsync<BeneficiaryNameDto>(response.Content);
+    }
+
+    public async Task<CountryDto[]> GetCountryList()
+    {
+        var client = _clientFactory.CreateClient("B2BApi");
+
+        var response = await client.PostAsync($"{_apiConfig.Endpoint.TrimEnd('/')}/get-country-list", null);
+        return await ReadAsJsonAsync<CountryDto[]>(response.Content);
     }
 
     private static async Task<T> ReadAsJsonAsync<T>(HttpContent content)

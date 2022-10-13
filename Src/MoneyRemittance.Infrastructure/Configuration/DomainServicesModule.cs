@@ -5,6 +5,7 @@ using MoneyRemittance.Domain.Countries.Services;
 using MoneyRemittance.Domain.Transactions.Services;
 using MoneyRemittance.Infrastructure.Domain.Banks;
 using MoneyRemittance.Infrastructure.Domain.Beneficiaries;
+using MoneyRemittance.Infrastructure.Domain.Countries;
 
 namespace MoneyRemittance.Infrastructure.Configuration;
 
@@ -33,6 +34,10 @@ public class DomainServicesModule : Module
 
         builder.RegisterType<Beneficiary>()
             .As<IBeneficiary>()
+            .SingleInstance();
+
+        builder.RegisterType<Country>()
+            .As<ICountry>()
             .SingleInstance();
 
         if (_transactionSubmitting is not null)
