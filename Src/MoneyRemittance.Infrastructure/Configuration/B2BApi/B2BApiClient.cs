@@ -3,6 +3,7 @@ using MoneyRemittance.Domain.Banks.Services;
 using MoneyRemittance.Domain.Beneficiaries.Services;
 using MoneyRemittance.Domain.Countries.Services;
 using MoneyRemittance.Domain.ExchangeRates.Services;
+using MoneyRemittance.Domain.States.Services;
 using Newtonsoft.Json;
 
 namespace MoneyRemittance.Infrastructure.Configuration.B2BApi;
@@ -41,6 +42,13 @@ internal class B2BApiClient
         var client = _clientFactory.CreateClient("B2BApi");
         var response = await client.PostAsync($"{_apiConfig.Endpoint.TrimEnd('/')}/get-country-list", null);
         return await ReadAsJsonAsync<CountryDto[]>(response.Content);
+    }
+
+    public async Task<StateDto[]> GetStateList()
+    {
+        var client = _clientFactory.CreateClient("B2BApi");
+        var response = await client.PostAsync($"{_apiConfig.Endpoint.TrimEnd('/')}/get-state-list", null);
+        return await ReadAsJsonAsync<StateDto[]>(response.Content);
     }
 
     public async Task<ExchangeRateDto> GetExchangeRateAsync(string from, string to)

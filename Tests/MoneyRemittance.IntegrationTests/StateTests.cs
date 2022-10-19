@@ -7,28 +7,28 @@ using Xunit.Abstractions;
 namespace MoneyRemittance.IntegrationTests;
 
 [Collection("Database collection")]
-public class CountryTests
+public class StateTests
 {
     private readonly IServiceMediator _mediator = TestFixture.Mediator;
     private readonly TestFixture _testFixture;
 
-    public CountryTests(TestFixture fixture, ITestOutputHelper output)
+    public StateTests(TestFixture fixture, ITestOutputHelper output)
     {
         _testFixture = fixture;
         TestFixture.Output = output;
     }
 
     [Fact]
-    public async Task Get_Countries_success()
+    public async Task Get_States_success()
     {
         await _testFixture.ResetAsync();
 
-        // Get Country List
-        var createCommand = new GetCountriesCommandBuilder()
+        // Get State List
+        var createCommand = new GetStatesCommandBuilder()
             .Build();
-        var countries = await _mediator.CommandAsync(createCommand);
+        var states = await _mediator.CommandAsync(createCommand);
 
         // Assert
-        Assert.Equal(2, countries.Length);
+        Assert.Equal(2, states.Length);
     }
 }

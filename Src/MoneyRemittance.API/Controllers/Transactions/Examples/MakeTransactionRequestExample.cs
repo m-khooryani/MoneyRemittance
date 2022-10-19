@@ -4,7 +4,7 @@ using Swashbuckle.AspNetCore.Filters;
 
 namespace MoneyRemittance.API.Controllers.Transactions.Examples;
 
-public class MakeTransactionRequestExample : IExamplesProvider<MakeTransactionRequest>
+internal class MakeTransactionRequestExample : IExamplesProvider<MakeTransactionRequest>
 {
     public MakeTransactionRequest GetExamples()
     {

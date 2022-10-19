@@ -3,11 +3,13 @@ using MoneyRemittance.Domain.Banks.Services;
 using MoneyRemittance.Domain.Beneficiaries.Services;
 using MoneyRemittance.Domain.Countries.Services;
 using MoneyRemittance.Domain.ExchangeRates.Services;
+using MoneyRemittance.Domain.States.Services;
 using MoneyRemittance.Domain.Transactions.Services;
 using MoneyRemittance.Infrastructure.Domain.Banks;
 using MoneyRemittance.Infrastructure.Domain.Beneficiaries;
 using MoneyRemittance.Infrastructure.Domain.Countries;
 using MoneyRemittance.Infrastructure.Domain.ExchangeRates;
+using MoneyRemittance.Infrastructure.Domain.States;
 
 namespace MoneyRemittance.Infrastructure.Configuration;
 
@@ -43,6 +45,10 @@ public class DomainServicesModule : Module
             .SingleInstance();
         builder.RegisterType<CountryExistanceChecking>()
             .As<ICountryExistanceChecking>()
+            .SingleInstance();
+
+        builder.RegisterType<State>()
+            .As<IState>()
             .SingleInstance();
 
         builder.RegisterType<ExchangeRate>()

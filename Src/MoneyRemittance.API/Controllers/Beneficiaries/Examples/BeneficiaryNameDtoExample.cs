@@ -3,7 +3,7 @@ using Swashbuckle.AspNetCore.Filters;
 
 namespace MoneyRemittance.API.Controllers.Beneficiaries.Examples;
 
-public class BeneficiaryNameDtoExample : IExamplesProvider<BeneficiaryNameDto>
+internal class BeneficiaryNameDtoExample : IExamplesProvider<BeneficiaryNameDto>
 {
     public BeneficiaryNameDto GetExamples()
     {

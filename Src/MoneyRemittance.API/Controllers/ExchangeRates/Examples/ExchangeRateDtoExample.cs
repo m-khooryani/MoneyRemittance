@@ -3,7 +3,7 @@ using Swashbuckle.AspNetCore.Filters;
 
 namespace MoneyRemittance.API.Controllers.ExchangeRates.Examples;
 
-public class ExchangeRateDtoExample : IExamplesProvider<ExchangeRateDto>
+internal class ExchangeRateDtoExample : IExamplesProvider<ExchangeRateDto>
 {
     public ExchangeRateDto GetExamples()
     {

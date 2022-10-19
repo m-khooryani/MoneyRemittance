@@ -3,7 +3,7 @@ using Swashbuckle.AspNetCore.Filters;
 
 namespace MoneyRemittance.API.Controllers.Countries.Examples;
 
-public class CountryDtoExample : IExamplesProvider<CountryDto[]>
+internal class CountryDtoExample : IExamplesProvider<CountryDto[]>
 {
     public CountryDto[] GetExamples()
     {
